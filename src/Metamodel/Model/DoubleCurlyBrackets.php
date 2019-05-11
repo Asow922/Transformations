@@ -6,8 +6,21 @@ use App\Metamodel\Utils\ArrayUtil;
 
 class DoubleCurlyBrackets extends OneVariableExpression
 {
+    const REG_EXP = '/{\{\s*(.*?)\s*\}\}/';
+
     /** @var array */
     protected $functions;
+
+    /**
+     * DoubleCurlyBrackets constructor.
+     * @param Expression $expression
+     * @param array $functions
+     */
+    public function __construct(Expression $expression, array $functions = [])
+    {
+        parent::__construct($expression);
+        $this->functions = $functions;
+    }
 
     /**
      * @return string

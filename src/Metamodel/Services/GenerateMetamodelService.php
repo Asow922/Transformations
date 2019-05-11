@@ -50,7 +50,9 @@ class GenerateMetamodelService
 
     protected function createAttributeValue(DOMAttr $DOMElement, Attribute $attribute)
     {
-        $attribute->addExpression(new Text($DOMElement->nodeValue));
+        foreach ($this->createExpressionFromText($DOMElement->nodeValue) as $one) {
+            $attribute->addExpression($one);
+        }
     }
 
     protected function extractCurrent(Crawler $crawler, Root $parent = null)
@@ -93,7 +95,9 @@ class GenerateMetamodelService
         if ($text != '') {
             $textRoot = new Root();
             $textRoot->setName('__text');
-            $textRoot->addExpression(new Text($text));
+            foreach ($this->createExpressionFromText($text) as $one) {
+                $textRoot->addExpression($one);
+            }
             $parent->addLeaf($textRoot);
         }
     }
@@ -107,5 +111,11 @@ class GenerateMetamodelService
 
             $this->addTextToParent($text, $parent);
         }
+    }
+
+    protected function createExpressionFromText($text, $expressions = [])
+    {
+        // TODO: Dodać rozbicie expressiona
+        return [new Text($text)];
     }
 }

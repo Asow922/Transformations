@@ -10,7 +10,7 @@ class ArrayUtil
     {
         if (($key = array_search($element, $array, true)) !== FALSE) {
             unset($array[$key]);
-            reset($array);
+            $array = array_values($array);
         }
     }
 }

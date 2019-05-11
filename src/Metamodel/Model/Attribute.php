@@ -15,6 +15,15 @@ class Attribute
     protected $expressions;
 
     /**
+     * Attribute constructor.
+     */
+    public function __construct()
+    {
+        $this->expressions = [];
+    }
+
+
+    /**
      * @return string
      */
     public function getName(): string

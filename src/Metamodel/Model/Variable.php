@@ -20,7 +20,7 @@ class Variable extends Expression
      * @param string $type
      * @param string $name
      */
-    public function __construct(string $name, string $type)
+    public function __construct(string $name, string $type = 'string')
     {
         $this->type = $type;
         $this->name = $name;

@@ -18,6 +18,17 @@ class FunctionMethod
     protected $functions;
 
     /**
+     * FunctionMethod constructor.
+     * @param array $expressions
+     * @param array $functions
+     */
+    public function __construct(array $expressions = [], array $functions = [])
+    {
+        $this->expressions = $expressions;
+        $this->functions = $functions;
+    }
+
+    /**
      * @return string
      */
     public function getName(): string

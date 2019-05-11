@@ -28,4 +28,10 @@ class FileService
 
         return file_get_contents($fileName);
     }
+
+    public function writeToFile(string $html, $outputDirectory)
+    {
+        $this->filesystem->mkdir($outputDirectory);
+        $this->filesystem->dumpFile($outputDirectory.'/result.html', $html);
+    }
 }

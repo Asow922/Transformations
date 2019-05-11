@@ -4,8 +4,10 @@
 namespace App\Parser\Command;
 
 
+use App\Metamodel\Services\GenerateHtmlService;
 use App\Metamodel\Services\GenerateMetamodelService;
 use App\Parser\Services\FileService;
+use App\Transformation\Services\TransformMetamodelService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\InvalidOptionException;
 use Symfony\Component\Console\Input\InputInterface;
@@ -17,19 +19,41 @@ class TransformationCommand extends Command
     const OPTION_INPUT_FILE = 'input-file';
     const OPTION_OUTPUT_DIRECTORY = 'output-directory';
     protected static $defaultName = 'transformation:run';
+
+    /**
+     * @var FileService
+     */
     protected $fileService;
+
+    /**
+     * @var GenerateMetamodelService
+     */
     protected $generateMetamodelService;
+
+    /**
+     * @var TransformMetamodelService
+     */
+    protected $transformMetamodelService;
+
+    /**
+     * @var GenerateHtmlService
+     */
+    protected $generateHtmlService;
+
+    protected $time;
 
     /**
      * TransformationCommand constructor.
      * @param FileService $fileService
      * @param GenerateMetamodelService $generateMetamodelService
      */
-    public function __construct(FileService $fileService, GenerateMetamodelService $generateMetamodelService)
+    public function __construct(FileService $fileService, GenerateMetamodelService $generateMetamodelService, TransformMetamodelService $transformMetamodelService, GenerateHtmlService $generateHtmlService)
     {
         parent::__construct();
         $this->fileService = $fileService;
         $this->generateMetamodelService = $generateMetamodelService;
+        $this->transformMetamodelService = $transformMetamodelService;
+        $this->generateHtmlService = $generateHtmlService;
     }
 
 
@@ -75,15 +99,31 @@ class TransformationCommand extends Command
         $output->writeln('Input file: ' . $inputFile);
         $output->writeln('Output directory: ' . $outputDirectory);
 
+        $this->time = microtime(true);
+        $output->writeln('> Read file');
         $fileContent = $this->fileService->readFile($inputFile);
+        $this->printOutputProgress('Generate model', $output);
         $model = $this->generateMetamodelService->generate($fileContent);
-
-        dump($model);
+        $this->printOutputProgress('Transform model', $output);
+        $transformedModel = $this->transformMetamodelService->transform($model);
+        $this->printOutputProgress('Generate HTML', $output);
+        $html = $this->generateHtmlService->generate($transformedModel);
+        $this->printOutputProgress('Save to file', $output);
+        $this->fileService->writeToFile($html, $outputDirectory);
 
         $output->writeln([
+            'time: '.round(microtime(true) - $this->time, 4).' seconds',
             '============',
             'Successful finish!',
             '',
         ]);
+    }
+
+    private function printOutputProgress($text, $output) {
+        $output->writeln([
+            "\t".'time: '.round(microtime(true) - $this->time, 4).' seconds',
+            '> '.$text
+        ]);
+        $this->time = microtime(true);
     }
 }

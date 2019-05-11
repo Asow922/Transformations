@@ -26,6 +26,8 @@ class Root
     public function __construct()
     {
         $this->attributes = [];
+        $this->expressions = [];
+        $this->leafs = [];
     }
 
     /**
