@@ -20,7 +20,8 @@ class FileService
     }
 
 
-    public function readFile($fileName) {
+    public function readFile($fileName)
+    {
         if (!$this->filesystem->exists($fileName)) {
             throw new NoFileException();
         }

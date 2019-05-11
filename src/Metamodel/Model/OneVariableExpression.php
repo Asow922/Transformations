@@ -41,5 +41,5 @@ abstract class OneVariableExpression extends Expression
     /**
      * @return string
      */
-    abstract function getOperator(): string ;
+    abstract function getOperator(): string;
 }

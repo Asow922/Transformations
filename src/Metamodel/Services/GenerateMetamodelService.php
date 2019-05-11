@@ -21,6 +21,38 @@ class GenerateMetamodelService
         return $AST;
     }
 
+    protected function createNewRoot(Crawler $crawler, Root $parent = null)
+    {
+        $newRoot = new Root();
+        $newRoot->setName($crawler->nodeName());
+        $this->createAttributeList($crawler, $newRoot);
+        if ($parent) {
+            $parent->addLeaf($newRoot);
+        }
+
+        return $newRoot;
+    }
+
+    protected function createAttributeList(Crawler $crawler, Root $root)
+    {
+        if ($crawler->count() > 1) {
+            throw new Exception('Nieprzewidziana sytuacja!!');
+        }
+
+        /** @var DOMElement $attribute */
+        foreach ($crawler->getNode(0)->attributes as $attribute) {
+            $newAttribute = new Attribute();
+            $newAttribute->setName($attribute->nodeName);
+            $this->createAttributeValue($attribute, $newAttribute);
+            $root->addAttribute($newAttribute);
+        }
+    }
+
+    protected function createAttributeValue(DOMAttr $DOMElement, Attribute $attribute)
+    {
+        $attribute->addExpression(new Text($DOMElement->nodeValue));
+    }
+
     protected function extractCurrent(Crawler $crawler, Root $parent = null)
     {
         if (!$crawler->children()->count()) {
@@ -34,17 +66,6 @@ class GenerateMetamodelService
             $this->checkLastText($crawler, $parent, $id);
             $this->extractCurrent($child, $newRoot);
         });
-    }
-
-    protected function checkLastText(Crawler $crawler, Root $parent, $id)
-    {
-        if (($id + 1) == $crawler->children()->count() && $crawler->children()->count() > $id && $crawler->children()->getNode($id)) {
-            $text = trim($crawler->html());
-            $text = explode($crawler->children()->getNode($id)->ownerDocument->saveHTML($crawler->children()->getNode($id)), $text);
-            $text = trim($text[count($text) - 1]);
-
-            $this->addTextToParent($text, $parent);
-        }
     }
 
     protected function checkTextBetweenChild(Crawler $crawler, Root $parent, $id)
@@ -77,35 +98,14 @@ class GenerateMetamodelService
         }
     }
 
-    protected function createNewRoot(Crawler $crawler, Root $parent = null)
+    protected function checkLastText(Crawler $crawler, Root $parent, $id)
     {
-        $newRoot = new Root();
-        $newRoot->setName($crawler->nodeName());
-        $this->createAttributeList($crawler, $newRoot);
-        if ($parent) {
-            $parent->addLeaf($newRoot);
+        if (($id + 1) == $crawler->children()->count() && $crawler->children()->count() > $id && $crawler->children()->getNode($id)) {
+            $text = trim($crawler->html());
+            $text = explode($crawler->children()->getNode($id)->ownerDocument->saveHTML($crawler->children()->getNode($id)), $text);
+            $text = trim($text[count($text) - 1]);
+
+            $this->addTextToParent($text, $parent);
         }
-
-        return $newRoot;
-    }
-
-    protected function createAttributeList(Crawler $crawler, Root $root)
-    {
-        if ($crawler->count() > 1) {
-            throw new Exception('Nieprzewidziana sytuacja!!');
-        }
-
-        /** @var DOMElement $attribute */
-        foreach ($crawler->getNode(0)->attributes as $attribute) {
-            $newAttribute = new Attribute();
-            $newAttribute->setName($attribute->nodeName);
-            $this->createAttributeValue($attribute, $newAttribute);
-            $root->addAttribute($newAttribute);
-        }
-    }
-
-    protected function createAttributeValue(DOMAttr $DOMElement, Attribute $attribute)
-    {
-        $attribute->addExpression(new Text($DOMElement->nodeValue));
     }
 }

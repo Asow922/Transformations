@@ -8,24 +8,17 @@ use App\Metamodel\Services\GenerateMetamodelService;
 use App\Parser\Services\FileService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\InvalidOptionException;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\DependencyInjection\Container;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\Filesystem\Filesystem;
 
 class TransformationCommand extends Command
 {
     const OPTION_INPUT_FILE = 'input-file';
     const OPTION_OUTPUT_DIRECTORY = 'output-directory';
-
+    protected static $defaultName = 'transformation:run';
     protected $fileService;
     protected $generateMetamodelService;
-
-    protected static $defaultName = 'transformation:run';
 
     /**
      * TransformationCommand constructor.
@@ -56,8 +49,7 @@ class TransformationCommand extends Command
                 'Output directory'
             )
             ->setDescription('Transform your AngularJs to Angular.')
-            ->setHelp('This command allows you to transformate AngularJS to Angular')
-        ;
+            ->setHelp('This command allows you to transformate AngularJS to Angular');
 
     }
 
@@ -80,8 +72,8 @@ class TransformationCommand extends Command
             throw new InvalidOptionException('No output directory option');
         }
 
-        $output->writeln('Input file: '.$inputFile);
-        $output->writeln('Output directory: '.$outputDirectory);
+        $output->writeln('Input file: ' . $inputFile);
+        $output->writeln('Output directory: ' . $outputDirectory);
 
         $fileContent = $this->fileService->readFile($inputFile);
         $model = $this->generateMetamodelService->generate($fileContent);
