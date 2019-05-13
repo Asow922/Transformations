@@ -112,7 +112,7 @@ class TransformationCommand extends Command
         $this->fileService->writeToFile($html, $outputDirectory);
 
         $output->writeln([
-            'time: '.round(microtime(true) - $this->time, 4).' seconds',
+            "\t".'time: '.round(microtime(true) - $this->time, 4).' seconds',
             '============',
             'Successful finish!',
             '',

@@ -1,19 +1,17 @@
 <!doctype html>
-<html ng-app="bla bla">
+<html ng-app>
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
-    <script src="someone"/>
-    <meta name="msapplication-TileColor" content="#222222">
-    <link rel="preconnect" href="https://www.google-analytics.com">
 </head>
 <body>
-<span>test</span>
-<div>
+<span ng-prop-inner_h_t_m_l="yourName">test</span>
+<img>
     Ten tekst
     <label>Name:</label>
-    <input type="text" ng-model="yourName" placeholder="Enter a name here">
+    <input type="text" ng-model="yourName" ng-prop-value="'My Name'" placeholder="Enter a name here">
     <hr>
-    <h1>Hello {{yourName}}!</h1>
+    <h1 ng-on-click="listener()">Hello {{yourName}}!</h1>
+    <img ng-srcset="http://images.clipartpanda.com/apple-20clip-20art-nicubunu_Apple_Clipart_Free.png 2x, https://www.knowledgekids.ca/sites/default/files/styles/porthole_active/public/program/porthole/MiffysAdventures-v2.png?itok=0C5BE0a3 4x">
 </div>
 </body>
 </html>
