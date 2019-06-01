@@ -48,6 +48,14 @@ class Attribute
     }
 
     /**
+     * @param array $expressions
+     */
+    public function setExpressions(array $expressions)
+    {
+        $this->expressions = $expressions;
+    }
+
+    /**
      * @param Expression $expression
      */
     public function addExpression(Expression $expression): void

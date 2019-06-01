@@ -1,0 +1,89 @@
+
+;
+bin/phpunit,8/6/86698a9324c014ff7c7b15ce18e19027a589b9e2
+B
+config/bundles.php,f/a/fa9a09a4e1ae4281250526d3dec214138beb5735
+D
+config/services.yaml,8/7/87042d1f46b57381244d70e7a42feeb7710727dc
+=
+composer.json,3/9/3957b91a0d8450cea0115cfd5af69eac90d75897
+`
+0var/cache/dev/srcApp_KernelDevDebugContainer.xml,5/d/5d6d136cb9665e34fc28e4a9a51ce7c59dfb370c
+9
+	.env.test,c/5/c589161bbc055e8f5fc7ed13aae8551821ece4b6
+4
+.env,3/c/3c84dcdc6bbe3d7817c49dcdc327b926fea1808a
+@
+phpunit.xml.dist,f/3/f3d8f03a0c4bab44351407daddbda1f23a33919c
+Q
+!src/Metamodel/Utils/ArrayUtil.php,9/6/9682860f96ca72fb6548420e4eb0da32696fb94f
+P
+ src/Metamodel/Model/Addition.php,e/3/e3ebe11a2aeddfe057cb9db32d3e12da2f92ec27
+Q
+!src/Metamodel/Model/Attribute.php,a/b/abc9e7b0814a4df85ecf6caa266439266a94cf62
+O
+src/Metamodel/Model/Bracket.php,f/6/f62ae4c46a8209a64c56453efa07dba5d6795010
+P
+ src/Metamodel/Model/Division.php,2/7/277fda4fc7c6d3a6000d70c166e448226c1c5b35
+M
+src/Metamodel/Model/Equal.php,7/5/75d2c994a34bb607ed58c4f6e97a2fdb49484ffe
+Q
+!src/Metamodel/Model/EqualSign.php,b/c/bc7ef024e8bfd70e2318707c9647b0e51c82f577
+R
+"src/Metamodel/Model/Expression.php,3/d/3de5b816bf918967b409054e8fc72d562a11c596
+V
+&src/Metamodel/Model/FunctionMethod.php,3/3/337f8793d7ea75031f99ca075af73a74f4139f3c
+V
+&src/Metamodel/Model/Multiplication.php,3/8/38b3927c9d2b040ce6f818b82b2e6009992c89bc
+P
+ src/Metamodel/Model/Negation.php,4/4/44c60ed0f4737ec7a0e34842f3453da5522931a2
+P
+ src/Metamodel/Model/NotEqual.php,f/e/fe7f010f498ba9dc1b6700cbefb9c4ffe8766131
+X
+(src/Metamodel/Model/ObjectExpression.php,c/6/c6caabd3b6a5596605b0e3d866ed5c44f5131c63
+]
+-src/Metamodel/Model/OneVariableExpression.php,6/a/6a26e36c4aeefb44479e7f354082c36545b79e58
+S
+#src/Metamodel/Model/Subtraction.php,0/d/0d42e9415db12072a4b36581d56452a89f4d3c9e
+]
+-src/Metamodel/Model/TwoVariableExpression.php,1/9/19ac058acd4c91c3a3e6d2009f9b70f1e26f0755
+P
+ src/Metamodel/Model/Variable.php,9/c/9c82714161e142738659e7916a69d4801165e8fa
+c
+3src/Metamodel/Services/GenerateMetamodelService.php,1/7/17b74ae6323b3adce96641bd77c87c4dc5f9bc53
+L
+src/Metamodel/Model/Text.php,3/3/3398a4c09ced9a0605c2ef8bdd762e3ef592edb4
+L
+src/Metamodel/Model/Root.php,b/0/b06c533adc9b85874eeb6ac7e33e4ec4c71ac27a
+W
+'src/Metamodel/Utils/ExpressionUtils.php,b/2/b28abea75ffcc9cae377b5877a2a5412cc89dacb
+[
++src/Metamodel/Model/DoubleCurlyBrackets.php,3/8/38402dcd4a8f328ccc51bbd2e9a1fa750e9fd155
+9
+	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+W
+'tests/Metamodel/Utils/ArrayUtilTest.php,9/8/98ff883ab8b0a6380ae7256519b46b25979efe53
+b
+2tests/Parser/Command/TransformationCommandTest.php,9/d/9dd732eba4c6c04e30378bc5a0ddc74120fb4daf
+i
+9tests/Metamodel/Services/GenerateMetamodelServiceTest.php,d/d/dd20efa26ad314b2a661834adf5b415c3b901448
+S
+#src/Parser/Services/FileService.php,4/1/41bafada0b7aa0f398073cf8ac3cdfc6b855357f
+f
+6src/Transformation/Transformations/DirectiveNgProp.php,e/4/e4f9c3b700c3fd24edc4a0911014d5b8d040d1ac
+\
+,src/Parser/Command/TransformationCommand.php,a/3/a36f3e3371588a1c6a751285a9dd0f249d96dcb6
+d
+4src/Transformation/Transformations/DirectiveNgOn.php,b/b/bbbfa79098cd827eed9da50f0940a9585170d424
+^
+.src/Metamodel/Services/GenerateHtmlService.php,a/2/a2be7114e9b918cdb4fef7831282599b08be4ffd
+h
+8src/Transformation/Transformations/DirectiveNgSrcset.php,e/9/e952ba6cf3bd22399624930424ad811ba99d62f2
+i
+9src/Transformation/Services/TransformMetamodelService.php,1/5/153f9fe57b37e7a68e71a919a68fdaa1b2a7d430
+f
+6src/Transformation/Transformations/DirectiveRemove.php,1/b/1b5d04ac7b03a072cb4d5f205a5776c28ea0b402
+`
+0src/Transformation/Transformations/Directive.php,b/7/b7fce94b83700c53a19fd0251c088919ded622bf
+c
+3src/Transformation/Transformations/DirectiveMap.php,1/e/1edbc812ad1ede9d56267c4987eb3cc7730e0fd9

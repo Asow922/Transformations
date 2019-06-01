@@ -9,7 +9,7 @@ use App\Metamodel\Model\Root;
 
 class DirectiveRemove extends Directive
 {
-    protected static $toRemove = [
+    public static $toRemove = [
         'ng-jq' => true,
         'ng-app' => true,
         'ng-ref' => true,

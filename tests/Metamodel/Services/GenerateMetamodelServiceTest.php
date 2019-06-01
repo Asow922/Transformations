@@ -7,8 +7,6 @@ use App\Metamodel\Model\Attribute;
 use App\Metamodel\Model\Root;
 use App\Metamodel\Model\Text;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 
 class GenerateMetamodelServiceTest extends KernelTestCase
 {

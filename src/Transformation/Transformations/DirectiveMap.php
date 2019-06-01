@@ -9,7 +9,7 @@ use App\Metamodel\Model\Root;
 
 class DirectiveMap extends Directive
 {
-    protected static $map = [
+    public static $map = [
         'ng-href' => '[href]',
         'ng-src' => '[src]',
         'ng-disabled' => '[disabled]',
@@ -48,7 +48,6 @@ class DirectiveMap extends Directive
         'ng-non-bindable' => 'ngNonBindable',
         'ng-pluralize' => 'ngPlural',
         'ng-repeat' => '*ngFor',
-        'ng-show' => '[hidden]',
         'ng-hide' => '[hidden]',
         'ng-switch' => '[ngSwitch]',
         'ng-transclude' => 'ng-content',

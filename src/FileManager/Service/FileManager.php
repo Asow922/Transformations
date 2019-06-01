@@ -1,13 +1,13 @@
 <?php
 
 
-namespace App\Parser\Services;
+namespace App\FileManager\Service;
 
 
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\Exception\NoFileException;
 
-class FileService
+class FileManager
 {
     protected $filesystem;
 
@@ -29,9 +29,9 @@ class FileService
         return file_get_contents($fileName);
     }
 
-    public function writeToFile(string $html, $outputDirectory)
+    public function writeToFile(string $html, $outputDirectory, $inputFile)
     {
         $this->filesystem->mkdir($outputDirectory);
-        $this->filesystem->dumpFile($outputDirectory.'/result.html', $html);
+        $this->filesystem->dumpFile($outputDirectory.'/'.basename($inputFile), $html);
     }
 }

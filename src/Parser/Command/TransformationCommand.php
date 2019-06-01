@@ -4,9 +4,9 @@
 namespace App\Parser\Command;
 
 
+use App\FileManager\Service\FileManager;
 use App\Metamodel\Services\GenerateHtmlService;
 use App\Metamodel\Services\GenerateMetamodelService;
-use App\Parser\Services\FileService;
 use App\Transformation\Services\TransformMetamodelService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\InvalidOptionException;
@@ -21,7 +21,7 @@ class TransformationCommand extends Command
     protected static $defaultName = 'transformation:run';
 
     /**
-     * @var FileService
+     * @var FileManager
      */
     protected $fileService;
 
@@ -44,10 +44,12 @@ class TransformationCommand extends Command
 
     /**
      * TransformationCommand constructor.
-     * @param FileService $fileService
+     * @param FileManager $fileService
      * @param GenerateMetamodelService $generateMetamodelService
+     * @param TransformMetamodelService $transformMetamodelService
+     * @param GenerateHtmlService $generateHtmlService
      */
-    public function __construct(FileService $fileService, GenerateMetamodelService $generateMetamodelService, TransformMetamodelService $transformMetamodelService, GenerateHtmlService $generateHtmlService)
+    public function __construct(FileManager $fileService, GenerateMetamodelService $generateMetamodelService, TransformMetamodelService $transformMetamodelService, GenerateHtmlService $generateHtmlService)
     {
         parent::__construct();
         $this->fileService = $fileService;
@@ -109,7 +111,7 @@ class TransformationCommand extends Command
         $this->printOutputProgress('Generate HTML', $output);
         $html = $this->generateHtmlService->generate($transformedModel);
         $this->printOutputProgress('Save to file', $output);
-        $this->fileService->writeToFile($html, $outputDirectory);
+        $this->fileService->writeToFile($html, $outputDirectory, $inputFile);
 
         $output->writeln([
             "\t".'time: '.round(microtime(true) - $this->time, 4).' seconds',
