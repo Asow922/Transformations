@@ -9,6 +9,7 @@ use App\Metamodel\Model\Root;
 use App\Transformation\Transformations\Directive;
 use App\Transformation\Transformations\DirectiveHidden;
 use App\Transformation\Transformations\DirectiveMap;
+use App\Transformation\Transformations\DirectiveNgFor;
 use App\Transformation\Transformations\DirectiveNgOn;
 use App\Transformation\Transformations\DirectiveNgProp;
 use App\Transformation\Transformations\DirectiveNgSrcset;
@@ -39,6 +40,7 @@ class TransformMetamodelService
             new DirectiveNgOn(),
             new DirectiveNgSrcset(),
             new DirectiveShow(),
+            new DirectiveNgFor(),
         ];
 
         foreach ($registeredTransform as $transform) {

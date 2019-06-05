@@ -47,7 +47,7 @@ class DirectiveMap extends Directive
         'ng-model-options' => '[ngModelOptions]',
         'ng-non-bindable' => 'ngNonBindable',
         'ng-pluralize' => 'ngPlural',
-        'ng-repeat' => '*ngFor',
+//        'ng-repeat' => '*ngFor',
         'ng-hide' => '[hidden]',
         'ng-switch' => '[ngSwitch]',
         'ng-transclude' => 'ng-content',

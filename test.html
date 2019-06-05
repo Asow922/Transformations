@@ -1,17 +1,33 @@
 <!doctype html>
-<html ng-app>
-<head>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
-</head>
-<body>
-<span ng-prop-inner_h_t_m_l="yourName">test</span>
-<img>
-    Ten tekst
-    <label>Name:</label>
-    <input type="text" ng-model="yourName" ng-show="value" ng-prop-value="'My Name'" placeholder="Enter a name here">
-    <hr>
-    <h1 ng-on-click="listener()">Hello {{yourName}}!</h1>
-    <img ng-srcset="http://images.clipartpanda.com/apple-20clip-20art-nicubunu_Apple_Clipart_Free.png 2x, https://www.knowledgekids.ca/sites/default/files/styles/porthole_active/public/program/porthole/MiffysAdventures-v2.png?itok=0C5BE0a3 4x">
+<html ng-app="myList">
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body ng-controller="myCtrl">
+<script>
+    var app = angular.module("myList", []);
+    app.controller("myCtrl", function ($scope) {
+        $scope.counter = 0;
+        $scope.innerValue = 'wartość w środku';
+        $scope.products = [
+            {name: 'product 1', visible: true},
+            {name: 'product 2', visible: true},
+            {name: 'product 3', visible: false},
+            {name: 'product 4', visible: true}
+        ];
+    });
+</script>
+<h2>Products</h2>
+<div ng-repeat="product in products">
+
+    <h3 ng-if="product.visible">
+        {{ product.name }}
+    </h3>
+
 </div>
+
+<button ng-click="counter = counter+1" >Click me!</button>
+<p>clicked {{ counter }} times! <span ng-bind="counter"></span></p>
+<p>Test hidden </p><div ng-hide="true">ukryta prawda</div>
+
 </body>
 </html>
